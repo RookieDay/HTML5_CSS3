@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XMLHttpRequest</title>
+    <style>
+        p {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>XMLHttpRequest</p>
+    <p id="result"></p>
+    <script>
+        var xhr = new XMLHttpRequest;
+        // var xhr = new XMLHttpRequest;
+        xhr.open('get', '02.php?name=itcast&age=10');
+        // xhr.open('get','o2.php?name=itcast&age=10')
+        // 当post形式必须要写请求头Content-Type，并且只能是application/x-www-form-urlencoded
+
+        // 当以get形式情况下可以不写Content-Type
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // POST数据放到请求主体中，但是不是必须要填写的
+        xhr.send(null);
+
+        // 监听响应状态
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+</body>
+
+</html>

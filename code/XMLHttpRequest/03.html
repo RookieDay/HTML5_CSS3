@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        p {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>XML</p>
+    <p id="result"></p>
+    <script>
+        var xhr = new XMLHTTPRequest;
+        // 可以设置同步方式，也可以异就方式
+        // 第三个参数为true则异步，false则为同步，默认是异步的
+        xhr.open("get", "03.php", true);
+        xhr.send(null);
+        console.log(333);
+    </script>
+</body>
+
+</html>

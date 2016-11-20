@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        p {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>XML</p>
+    <p>
+        <input type="text" id="val" name="" value="">
+        <input type="button" value="确定" id="btn">
+    </p>
+    <p id="result"></p>
+    <script>
+        var btn = document.getElementById('btn');
+        var xhr = new XMLHTTPRequest;
+        var input = document.querySelector("input");
+
+        btn.onclicl = function() {
+            xhr.open("get", '04.php?name=' + input.vale);
+            // xhr.setRequestHeader();
+            xhr.send(null);
+            xhr.onreadystatechange = function(){
+                if(xhr.readState == 4 && xhr.status == 200) {
+                    document.querySelector('#result').
+                        innerHTML = xhr.reponseText;
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

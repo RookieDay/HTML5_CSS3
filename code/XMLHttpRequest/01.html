@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XMLHttpRequest</title>
+    <style>
+        p {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>XMLHttpRequest</p>
+    <p id="result"></p>
+    <script>
+        // console.log(xhr.readyState);
+
+        // 实例化这个内建对象
+        var xhr = new XMLHttpRequest;
+        // console.log(xhr.readyState);
+
+        // xhr 可以有好多方法
+
+        // console.log(xhr);
+
+        // 1.通过open方法发起请求行
+        xhr.open('get', '01.php');
+        // console.log(xhr.readyState);
+
+        // 设置了一个请求头
+        xhr.setRequestHeader('Content-Type', 'text/html');
+        // console.log(xhr.readyState);
+
+        // 发送请求主体
+        xhr.send(null);
+        // console.log(xhr.readyState);
+
+        // 监听响应状态并处理
+        xhr.onreadystatechange = function() {
+            // 响应的状态
+            // console.log(xhr.readyState);
+            // 响应的服务器状态码
+            // console.log(xhr.status);
+
+            // 监听完成的状态及服务器响应状态
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // 获得结果
+                console.log(xhr.responseText);
+
+                // DOM操作将结果放到页面里
+                document.getElementById('result').innerHTML = xhr.responseText;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单处理</title>
+    <style>
+        form {
+            width: 500px;
+            margin: 100px auto;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- action 表示提交地址  method 表示的是提交的方式，get post-->
+    <!-- get 形式会将表单项显示在url里面 -->
+    <!-- post 不会将表单项显示出来，会更安全 -->
+    <form action="./login.php" method="post" enctype="multipart/form-data">
+        <label for="">
+			用户名: <input type="text" name="name">
+		</label>
+        <label for="">
+			密码: <input type="password" name="pass">
+		</label>
+        <!-- <label for="">
+			邮箱: <input type="email" name="email">
+		</label> -->
+        <label for="">
+			头像: <input type="file" name="photo">
+		</label>
+        <label for="">
+			<input type="submit" value="提交">
+		</label>
+    </form>
+
+    <script>
+        if (a > 10) {
+
+        }
+    </script>
+</body>
+
+</html>

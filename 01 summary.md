@@ -1,3 +1,38 @@
+搭建HTTP服务
+安装wampserver
+
+注意事项：
+    1、检查网络是不是通的 ping 对方IP
+    2、检查防火墙是否开启，如果开启将不能正常被访问
+    3、检查访问权限 Allow from all
+    4、理解默认索引
+    5、确保端口没有被其它程序占用
+    6、“#”表示注释
+    7、修改配置要格外小心，禁止无意修改其它内容
+将我们制作好的网页拷贝到配置好的根目录下，浏览器访问127.0.0.1即可
+或者修改配置文件bin\apache\Apache2.2.21\conf\httpd.conf 
+    设定根目录 DocumentRoot
+    配置根目录 <Directory 之后重启服务
+
+配置虚拟主机
+在一台Web服务器上，我们可以通过配置虚拟主机，然后分别设定根目录，实现对多个网站的管理。
+具体步骤如下：
+    1、开启虚拟主机辅配置，在httpd.conf 中找到 
+        #Virtual hosts 
+        #Include conf/extra/httpd-vhosts.conf
+        去掉前面的#号注释，开启虚拟主机配置
+    2、 配置虚拟主机，打开conf/extra/httpd-vhosts.conf 
+        分别修改以下三项
+        DocumentRoot "E:/www/example"
+        ServerName "example.com "
+        ServerAlias "www.example.com"
+        其它项无需指定。
+    3、修改DNS（hosts）文件  注：修改hosts文件权限
+        打开C:\Windows\System32\drivers\etc\hosts
+        目录是固定的
+    4、重启Apache
+    5、浏览器访问www.example.com
+
 PHP:
 表单处理
     表单name属性的是用来提供给服务端接收所传递数据而设置的
@@ -176,3 +211,92 @@ jQuery中的JSONP
     jsonpCallback 可以指定相应的回调函数，默认自动生成
 
 
+/**
+    * 连接符
+    * Javascript中用+号表示连接符
+    * PHP中使用.点号
+    */
+	$hello = 'hello';
+	$world = 'world';
+
+	echo $hello . $world;   helloworld
+
+	// 输出的是详细信息
+	var_dump($hello);       string 'hello' (length=5)
+
+
+    $arr = array('name'=>'itcast'); 
+	// 一般场景是用来设试代码使用
+	var_dump($arr);  array   'name' => string 'itcast' (length=6)
+
+
+/**
+	 * 分支控制语句、循环语句
+	 * 与Javascript一样
+	 * foreach 数组遍历函数，类似Javascript中的 for in
+	 */
+
+	// var arr = [1, 2, 3, 4];
+	// for(var i=0; i<arr.length; i++) {console.log(arr[i]);}
+
+	// 索引数组
+	// $arr = array(1, 2, 3, 4, 5, 6);
+
+	// echo count($arr);
+	// 需要获取数组长度，count($arr);
+	// for($i=0; $i<count($arr); $i++) {
+	// 	echo $arr[$i];
+	// }
+
+	// 关联数组
+	// $arr = array('name'=>'itcast', 'age'=>10);
+
+	// 用来遍历数组的
+	// foreach($arr as $key=>$val) {
+	// 	// echo $key;
+	// 	echo $val;
+	// }
+
+	// var obj = {name: 'itcast', age: 10}
+	// for(var key in obj) {console.log(obj[key])}
+
+	// $arr = array(1, 2, 3, 4, 5, 6);
+
+	// foreach($arr as $a=>$b) {
+	// 	// echo $a;
+	// 	echo $b;
+	// }
+
+	// 实际开发中用foreach来遍历数组
+
+	// 单/双引号号
+	$str = 'hello';
+
+	// 双引号可以解析变量
+	// echo "$str world";  hello world
+
+	// 单引号不会解析变量，会当字符串处理
+	echo '$str world';
+
+	echo $str . 'world!';
+
+
+
+ var xhr = new XMLHttpRequest;
+// var xhr = new XMLHttpRequest;
+xhr.open('get', '02.php?name=itcast&age=10');
+// xhr.open('get','o2.php?name=itcast&age=10')
+// 当post形式必须要写请求头Content-Type，并且只能是application/x-www-form-urlencoded
+
+// 当以get形式情况下可以不写Content-Type
+// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+// POST数据放到请求主体中，但是不是必须要填写的
+xhr.send(null);
+
+// 监听响应状态
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        console.log(xhr.responseText);
+    }
+}
