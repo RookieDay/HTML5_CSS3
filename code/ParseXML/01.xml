@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<items>
+		<item>
+			<name>刘德华</name>
+			<age>53</age>
+			<sex>男</sex>
+			<ablum>&lt;&lt;一起走过的日子&gt;&gt;</ablum>
+		</item>
+		<item>
+			<name>宋小宝</name>
+			<age>35</age>
+			<sex>男</sex>
+			<ablum>&lt;&lt;二人转&gt;&gt;</ablum>
+		</item>
+	</items>
+</root>

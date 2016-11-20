@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--[if lte IE 7]>
+		<script src="json2.js"></script>
+	<![endif]-->
+</head>
+<script>
+    var obj = {
+        name: 'itcast',
+        age: 10
+    }
+    		// JSON对象在IE7以下没有
+		// JSON.stringify(obj);
+
+		// 解决兼容
+
+		// var str = '{"name": "itcast", "age": 10}';
+		// console.log(eval('(' + str + ')'));
+
+		// var str = 'alert(2)';
+
+		// eval('(' + str + ')');
+
+		// 引入json2.js后就可以按正常用法来写
+		// JSON.stringify();
+
+		// 1、性能较差
+		// 2、安全性较差
+		var input = querySelector('input').value;
+		eval('(' + input + ')');
+
+</script>
+
+<body>
+
+</body>
+
+</html>
