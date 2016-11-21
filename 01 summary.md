@@ -402,3 +402,59 @@ var $ = {
 
 
 box-sizing: border-box; 代表计算宽高的时候会把boder 加上等于你现在样式里面设计的width
+
+<script src="./js/jquery.min.js"></script>
+<script>
+
+    var obj = {
+        name: 'itcast',
+        age: 10
+    }
+
+    var opt = {
+        name: 'web',
+        age: 15,
+        sex: '男'
+    }
+
+    // 合并两个对象，后面的 有则替换 无则添加
+    console.log($.extend(obj, opt));
+</script>
+
+
+简单插件开发：
+<p>我是一个文字</p>
+
+<script src="./js/jquery.min.js"></script>
+<script>
+
+    console.log($.fn);
+
+    // $('p').addClass();
+
+    $.fn.test = function () {
+        console.log(this);
+    }
+
+    $('p').test();
+
+    // 1、自已可以往$.fn上面添加一个自定义的方法
+    // 2、当我们在这个方法引用this，this指向的是当前DOM对象
+    // 3、调用的时候和普通的方法一样
+
+    // 换颜色
+    $.fn.setColor = function (color) {
+        $(this).css('color', color);
+    }
+
+    $('p').click(function () {
+        $(this).setColor('blue');
+    });
+
+</script>
+
+
+
+
+
+
