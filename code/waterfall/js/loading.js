@@ -36,5 +36,4 @@ $(window).on('scroll', function() {
         var page = $('p.tips').attr('data-page');
         getData(page);
     }
-    xxssx
 });
