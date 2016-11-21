@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            width: 700px;
+            border-collapse: collapse;
+        }
+        
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<table></table>
+<div class="btn"><input type="" value="Get"></button>
+    <script src="./js/template.js"></script>
+    <script src="./js/stars.js"></script>
+    <script type="text/template" id="tpl">
+        <% for(var i = 0 ; i < dat.length; i++) %>
+            <tr>
+                <td>
+                    <%= dat[i].name %>
+                </td>
+                <td>
+                    <%= dat[i].age %>
+                </td>
+                <td>
+                    <%= dat[i].sex %>
+                </td>
+                <td>
+                    <%= dat[i].photo %>
+                </td>
+                <td>
+                    <%= dat[i].ablum %>
+                </td>
+            </tr>
+            <% } %>
+    </script>
+</div>
+
+<body>
+
+</body>
+
+</html>

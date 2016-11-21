@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS 模板引擎</title>
+</head>
+
+<body>
+    <script>
+        // 模板
+        // 提前定义好的位置就叫 打一个标记
+        var str = '大家好，我叫<%= name %>，我今年<%= age %>， 我在百度学习！';
+
+        var data = {
+            name: 'rcc',
+            age: 10
+        }
+
+        // 我们要利用正则表达式去查找 具有特殊标记 的内容
+        var reg = /<%=\s*([^%>]+\S+)\s*%>/;
+
+        var match = reg.exec(str);
+
+        console.log(match);
+
+        var str1 = match[0]; // <%= name %>
+        var str2 = match[1]; // name
+
+        // 替换 这一步只替换了name
+        var str = str.replace(str1, data[str2]);
+
+        // 继续查找
+        match = reg.exec(str);
+
+        str1 = match[0]; // <%= age %>
+        str2 = match[1]; // age
+
+        str = str.replace(str1, data[str2]);
+
+        // console.log(match);
+        // console.log(str);
+    </script>
+</body>
+
+</html>

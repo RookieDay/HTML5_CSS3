@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS 模板引擎</title>
+</head>
+
+<body>
+    <div class="result"></div>
+    <script type="text/javascript">
+        // alert(1);
+    </script>
+    <!-- 引入模板引擎 -->
+    <script src="./js/template-native.js"></script>
+    <!-- 模板 -->
+    <script type="text/rcc" id="tpl">
+        <h4>
+            <%=name%>
+        </h4>
+        <h5>
+            <%=age%>
+        </h5>
+    </script>
+
+    <script>
+        // 1、要有一个字符串
+        // 2、就是要有一个数据对象
+        // 3、数据要与我们模板字符串有一定关联
+
+        // 数据
+        var data = {
+            name: 'rcc',
+            age: 10
+        }
+
+        // 封装一个函数
+        // function template(id, data) {
+        // 	// tpl 实际是一个元素的ID
+        // 	var tpl = document.getElementById(id);
+
+        // 	// 字符串
+        // 	tpl = tpl.innerHTML;
+
+        // 	// 用来查换特殊标记的内容
+        // 	var reg = /<%=\s*([^%>]+\S)\s*%>/;
+        // 	var match;
+
+        // 	// 匹配不到则为null循环则停止
+        // 	while(match = reg.exec(tpl)) {
+        // 		// 替换
+        // 		tpl = tpl.replace(match[0], data[match[1]]);
+        // 	}
+
+        // 	return tpl;
+        // }
+
+        var html = template('tpl', data);
+
+        console.log(html);
+
+        document.querySelector('.result').innerHTML = html;
+    </script>
+</body>
+
+</html>

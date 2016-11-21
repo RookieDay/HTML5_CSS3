@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS 模板引擎</title>
+</head>
+
+<body>
+    <script>
+        var str = '大家好，我叫<%= name %>，我今年<%= age %>， 我在<%= school %>学习！性别<%= sex %>';
+
+        var data = {
+            name: 'rcc',
+            age: 10,
+            sex: '男',
+            school: 'baidu'
+        }
+
+        // 用来查换特殊标记的内容
+        var reg = /<%=\s*([^%>]+\S)\s*%>/;
+        var match = null;
+
+        // 匹配不到则为null循环则停止
+        while (match = reg.exec(str)) {
+            var str1 = match[0];
+            var str2 = match[1];
+            str = str.replace(str1, data[str2]);
+        }
+
+        console.log(str);
+    </script>
+</body>
+
+</html>
