@@ -522,6 +522,23 @@ box-sizing: border-box; 代表计算宽高的时候会把boder 加上等于你�
 
 
 
-
+Jsonp 跨域：
+// jQuery中JSONP是通过$.ajax()，来实现的
+$.ajax({
+    url: 'http://api.study.com/jsonp.php',
+    type: 'get',
+    // 这里需要将dataType 指定为jsonp
+    dataType: 'jsonp',
+    data: {name: 'itcast'},
+    // 以字符串形式将事先定义好的函数名传递进来
+    // jsonpCallback: 'test',
+    // jsonp: 'call',
+    success: function (data) {
+        // console.log(data);
+    },
+    error: function (err) {
+        console.log(err);
+    }
+});
 
 

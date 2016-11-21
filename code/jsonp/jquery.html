@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery JSONP</title>
+</head>
+
+<body>
+
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        // jQuery中JSONP是通过$.ajax()，来实现的
+        $.ajax({
+            url: 'http://api.study.com/jsonp.php',
+            type: 'get',
+            // 这里需要将dataType 指定为jsonp
+            dataType: 'jsonp',
+            data: {
+                name: 'baidu'
+            },
+            // 以字符串形式将事先定义好的函数名传递进来
+            // jsonpCallback: 'test',
+            // jsonp: 'call',
+            success: function(data) {
+                // console.log(data);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    </script>
+</body>
+
+</html>

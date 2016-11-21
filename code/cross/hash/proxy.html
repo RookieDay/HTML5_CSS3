@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>proxy</title>
+</head>
+<body>
+	<script>
+		// 将数据传递study.com的hash上
+		parent.parent.location.hash = self.location.hash.substring(1);
+	</script>
+</body>
+</html>

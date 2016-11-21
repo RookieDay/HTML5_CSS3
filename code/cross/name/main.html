@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>window.name</title>
+	<style>
+		p {
+			font-size: 24px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<!-- setp 1 -->
+	<iframe id="iframe" src="http://api.study.com/name.html" frameborder="0"></iframe>
+	<button id="btn">获取数据</button>
+	<script>
+		var iframe = document.getElementById('iframe');
+
+		// 将数据填加到name上了
+		iframe.contentWindow.name = 100;
+
+		iframe.onload = function () {
+			this.src = 'proxy.html';
+			this.onload = null;
+		}
+
+		var btn = document.getElementById('btn');
+		btn.onclick = function () {
+			var text = iframe.contentWindow.name;
+			document.write('<p>我是从api.study.com中得到值' + text + '</p>');
+		}
+	</script>
+</body>
+</html>

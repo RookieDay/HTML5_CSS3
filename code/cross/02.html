@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨域</title>
+</head>
+<body>
+	<iframe id="iframe" src="iframe.html" frameborder="0"></iframe>
+	<script>
+		var iframe = document.querySelector('iframe');
+
+		// window.document.getElementById();
+
+		iframe.onload = function () {
+			// alert(1);
+
+			// 获取iframe 的window对象
+			var contentWindow = iframe.contentWindow;
+
+			contentWindow.document.getElementById('txt').style.color = 'red';
+		}
+	</script>
+</body>
+</html>

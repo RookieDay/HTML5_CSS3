@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨域</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		iframe {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<iframe id="iframe" src="http://api.study.com/postmessage.html" frameborder="0"></iframe>
+
+	<script>
+		var iframe = document.getElementById('iframe');
+
+		iframe.onload = function () {
+			// 向哪个域下传值
+			iframe.contentWindow.postMessage('red', 'http://api.study.com');
+		}
+		
+	</script>
+</body>
+</html>
