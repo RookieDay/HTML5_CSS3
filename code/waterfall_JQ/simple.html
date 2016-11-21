@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>我是一个文字</p>
+
+	<script src="./js/jquery.min.js"></script>
+	<script>
+
+		console.log($.fn);
+
+		// $('p').addClass();
+
+		$.fn.test = function () {
+			console.log(this);
+		}
+
+		$('p').test();
+
+		// 1、自已可以往$.fn上面添加一个自定义的方法
+		// 2、当我们在这个方法引用this，this指向的是当前DOM对象
+		// 3、调用的时候和普通的方法一样
+
+		// 换颜色
+		$.fn.setColor = function (color) {
+			$(this).css('color', color);
+		}
+
+		$('p').click(function () {
+			$(this).setColor('blue');
+		});
+
+	</script>
+</body>
+</html>
