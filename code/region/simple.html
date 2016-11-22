@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>省市县</title>
+</head>
+
+<body>
+    <select name="province" id="province"></select>
+    <select name="city" id="city"></select>
+    <select name="district" id="district"></select>
+
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        (function(select) {
+            var map = ['p', 'c', 'd'];
+            $.each(select, function(key, value) {
+                $('#' + val).attr({
+                        'data-level': key
+                    })
+                    .on('change', function() {
+                        var _this = $(this),
+                            level = parseInt(_this.attr('data-level')),
+                            pid = _this.val() || '000000',
+                            select;
+                        if (level == 0 && !_this.children().size()) {
+                            type = map[level];
+                        } else {
+                            level += 1;
+                        }
+                        type = map[level];
+                        select = $('[data-level=' + level + ']');
+                        $.ajax({
+                            url: 'region.php',
+                            type: 'get',
+                            dataType: 'json',
+                            data: {
+                                type: type,
+                                pid: pid
+                            },
+                            success: function(data) {
+                                $('[data-level]').each(function() {
+                                    if ($(this).attr('data-level') >= level) {
+                                        $(this).empty();
+                                    }
+                                });
+                                var opts = '';
+                                for (var k in data) {
+                                    opts += '<option value="' + k + '">' +
+                                        data[k] + '</option>';
+                                }
+                                select.append(opts);
+                            }
+                        });
+                    });
+            });
+            $('select[data-level=0]').trigger('change');
+        })(['province', 'city', 'district']);
+    </script>
+</body>
+
+</html>

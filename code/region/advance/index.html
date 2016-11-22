@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<select name="p" id="province">
+    
+</select>
+<select name="c" id="city">
+    
+</select>
+<select name="d" id="district">
+    
+</select>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.region.js"></script>
+<script>
+		$.Region({
+			parmas: ['province|140000', 'city|140400', 'district|140401'],
+			url: 'getRegion.php'
+		});
+</script>
+
+<body>
+
+</body>
+
+</html>
