@@ -542,3 +542,150 @@ $.ajax({
 });
 
 
+H5
+    HTML5并不仅仅只是做为HTML标记语言的一个最新版本，更重要的是它制定了Web应用开发的一系列标准，成为第一个将Web做为应用开发平台的HTML语言。
+    HTML5定义了一系列新元素，如新语义标签、智能表单、多媒体标签等，可以帮助开发者创建富互联网应用，还提供了一些Javascript API，如地理定位、重力感应、硬件访问等，
+    可以在浏览器内实现类原生应用，甚至结合Canvas我们可开发网页版游戏。
+语义标签
+    语义标签对于我们并不陌生，如<p>表示一个段落、<ul>表示一个无序列表<h1> ~ <h6>表示一系列标题等，在此基础上HTML5增加了大量更有意义的语义标签，
+    更有利于搜索引擎或辅助设备来理解HTML页面内容。
+    传统的做法我们或许通过增加类名如class="header"、class="footer"，使HTML页面具有语义性，但是不具有通用性。
+    HTML5则是通过新增语义标签的形式来解决这个问题，例如<header></header>、<footer></footer>等，这样就可以使其具有通用性。
+
+常用新语义标签
+    <nav> 表示导航
+    <header> 表示页眉
+    <footer> 表示页脚
+    <section> 表示区块
+    <article> 表示文章 如文章、评论、帖子、博客
+    <aside> 表示侧边栏 如文章的侧栏
+    <figure> 表示媒介内容分组 与 ul > li 做个比较
+    <mark> 表示标记 (带用“UI”，不怎么用，可以重写样式)
+    <progress> 表示进度 (带用“UI”，不怎么用，不可重写样式)
+    <time> 表示日期
+    <hgroup> 标题列表 (据说已废弃)
+    <details>
+    <bdi>
+    <command>
+    <summary>
+    <rp>
+    <rt>
+    <ruby>
+    本质上新语义标签与<div>、<span>没有区别，只是其具有表意性，使用时除了在HTML结构上需要注意外，其它和普通标签的使用无任何差别，可以理解成<div class="nav"> 
+    相当于 <nav>。不要好奇，它只是一个标签！尽量避免全局使用header、footer、aside等语义标签。
+
+兼容处理
+    在不支持HTML5新标签的浏览器里，会将这些新的标签解析成行内元素(inline)对待，所以我们只需要将其转换成块元素(block)即可使用，但是在IE9版本以下，
+    并不能正常解析这些新标签，但是却可以识别通过document.createElement('tagName')创建的自定义标签，于是我们的解决方案就是将HTML5的新标签
+    全部通过document.createElement('tagName')来创建一遍，这样IE低版本也能正常解析HTML5新标签了，在实际开发中我们更多采用的是通过检测IE浏览器
+    的版本来加载第三方的一个JS库来解决兼容问题。
+    <!--[if lte IE 8]>
+        <script src./js/html5shiv.min.js></script>
+    <![endif]-->
+表单
+    伴随着互联网富应用以及移动开发的兴起，传统的Web表单已经越来越不能满足开发的需求，所以HTML5在Web表单方向也做了很大的改进，如拾色器、日期/时间组件等，使表单处理更加高效。    
+    输入类型
+        email 输入email格式
+        tel 手机号码
+        url 只能输入url格式
+        number 只能输入数字
+        search 搜索框
+        range 范围
+        color 拾色器
+        time	时间
+        date 日期 不是绝对的
+        datetime 时间日期
+        month 月份
+        week 星期
+        部分类型是针对移动设备生效的，且具有一定的兼容性，在实际应用当中可选择性的使用。
+    表单元素（标签）
+        <datalist> 下拉选项，使用中文时要注意
+        <keygen> 生成加密字符串
+        <output> 不可当做数据提交？
+        <meter> 表示度量器，不建议用作进度条
+    表单属性
+        placeholder 占位符
+        autofocus 获取焦点
+        multiple 文件上传多选或多个邮箱地址
+        autocomplete 自动完成，用于form元素，也可用于部分input，默认值on
+        form 指定表单项属于哪个form，处理复杂表单时会需要
+        novalidate 关闭验证，可用于<form>标签，（只适应用form）
+        required 验证条件，必填项
+        pattern 正则表达式 自定义验证规则
+        表单重写没有提及，自行验证，共包含
+        formaction、formenctype、formtarget、formmethod、formnovalidate
+        应用于提交按钮上，如：<input type="submit" formaction="xxx.php">
+    表单事件
+        oninput 用户输入内容时触发，可用于移动端输入字数统计
+        oninvalid 验证不通过时触发
+多媒体
+    在HTML5之前，在网页上播放音频/视频的通用方法是利用Flash来播放，但是大多情况下，并非所有用户的浏览器都安装了Flash插件，
+    由此使得处理音频/视频播放变的非常复杂，并且移动设备的浏览器并不支持Flash插件。
+    音频
+        HTML5通过<audio>标签来解决音频播放的问题。
+        使用相当简单，如下所示
+        <!--通过src指定的音频文件路径即可-->
+        <audio src="./music/see you again.mp3"></audio>
+    并且可以通过附加属性可以更友好控制音频的播放，如：
+    autoplay 自动播放
+    controls 是否显不默认播放控件
+    loop 循环播放
+    preload 预加载 同时设置autoplay时些属性失效
+    由于版权等原因，不同的浏览器可支持播放的格式是不一样的
+                IE9  Firefox3.5  Opera10.5  Chorme3.0   Safari3.0
+    Ogg Vorbis         Y           Y          Y
+    mp3          Y                            Y            Y
+    Wav                Y           Y                       Y
+    多浏览器支持的方案，如下
+    <audio src="" controls>
+        <!--通过source标签指定多格式音频文件-->
+        <source src="./music/See you again.mp3">
+        <source src="./music/See you again.wav">
+        <source src="./music/See you again.ogg">
+        您的浏览器不支持HTML音频播放功能
+    </audio>
+
+视频
+    HTML5通过<video>标签来解决音频播放的问题。
+    同音频播放一样，<video>使用也相当简单，如下
+    <!--通过src指定的音频文件路径即可-->
+    <video src="./music/see you again.mp3"></video>
+    同样，通过附加属性可以更友好的控制视频的播放
+    autoplay 自动播放
+    controls 是否显示默认播放控件
+    loop 循环播放
+    preload 预加载，同时设置了autoplay，此属性将失效
+    width 设置播放窗口宽度
+    height 设置播放窗口的高度
+    由于版权等原因，不同的浏览器可支持播放的格式是不一样的 -- 见图片
+    多浏览器支持的方案，如下
+    <video controls="controls">
+        <!--通过source标签指定多格式视频文件-->
+        <source src="./video/movie.ogg">
+        <source src="./video/movie.mp4">
+        您的浏览器不支持HTML视频播放功能
+    </audio>
+
+微数据
+    http://kayosite.com/html5-microdata.html
+    可以理解成新语义标签的一种补充
+ARIA
+    http://www.zhangxinxu.com/wordpress/2012/03/wai-aria-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%98%85%E8%AF%BB/#ariaRole
+
+DOM扩展
+    获取元素
+        1、document.getElementsByClassName ('class') 通过类名获取元素，以类数组形式存在。
+        2、document.querySelector('selector') 通过CSS选择器获取元素，符合匹配条件的第1个元素。
+        3、document.querySelectorAll('selector') 通过CSS选择器获取元素，以类数组形式存在。
+	类名操作
+        1、Node.classList.add('class') 添加class
+        2、Node.classList.remove('class') 移除class
+        3、Node.classList.toggle('class') 切换class，有则移除，无则添加
+        4、Node.classList.contains('class') 检测是否存在class
+        Node指一个有效的DOM节点，是一个通称。
+	自定义属性
+        在HTML5中我们可以自定义属性，其格式如下data-*=""，例如
+        data-info="我是自定义属性"，通过Node.dataset['info'] 我们便可以获取到自定义的属性值。
+        Node.dataset是以对象形式存在的
+        当我们如下格式设置时，则需要以驼峰格式才能正确获取
+        data-my-name="baidu"，获取Node.dataset['myName']
