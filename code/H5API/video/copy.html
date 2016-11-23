@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视频播放器</title>
+	<link rel="stylesheet" href="./css/font-awesome.css">
+	<link rel="stylesheet" href="./css/player.css">
+</head>
+<body>
+	<figure>
+		<figcaption>视频播放器</figcaption>
+		<div class="player">
+			<video src="./video/fun.mp4"></video>
+			<div class="controls">
+				<!-- 播放/暂停 -->
+				<a href="javascript:;" class="switch fa fa-play"></a>
+				<!-- 全屏 -->
+				<a href="javascript:;" class="expand fa fa-expand"></a>
+				<!-- 进度条 -->
+				<div class="progress">
+					<div class="loaded"></div>
+					<div class="line"></div>
+					<div class="bar"></div>
+				</div>
+				<!-- 时间 -->
+				<div class="timer">
+					<span class="current">00:00:00</span> /
+					<span class="total">00:00:00</span>
+				</div>
+				<!-- 声音 -->
+			</div>
+		</div>
+	</figure>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/moment.min.js"></script>
+	<script>
+
+		var video = document.querySelector('video');
+		// 当前播放时间
+		var current = $('.current');
+		// 获取进度条
+		var line = $('.line');
+
+		// alert(video.duration)
+		// 视频可以播放了
+		video.oncanplay = function () {
+			// alert(video.duration)
+
+			var duration = video.duration;
+
+			// 小时
+			var h = Math.floor(duration / 3600);
+			var m = Math.floor(duration / 60);
+			var s = Math.floor(duration % 60);
+
+			h = h < 10 ? '0' + h : h;
+			m = m < 10 ? '0' + m : m;
+			s = s < 10 ? '0' + s : s;
+
+			console.log(h, m, s);
+
+			// 将时间放入页面里
+			$('.total').text(h + ':' + m + ':' +s);
+		}
+
+		// 播放/暂停
+		$('.switch').on('click', function () {
+
+			// alert(video.paused);
+
+			// 需要明确当前是否处理播放状态
+			if(video.paused) {
+				// 播放视频
+				video.play();
+			} else {
+				// 暂停视频
+				video.pause();
+			}
+
+			// 切换图标
+			$(this).toggleClass('fa-play fa-pause');
+		});
+
+		// 时间进度
+		// 1、应该要有事件监听
+		video.ontimeupdate = function () {
+			// console.log(video.currentTime);
+
+			// 变量处理
+			var currentTime = video.currentTime;
+			var duration = video.duration;
+
+			// 小时
+			var h = Math.floor(currentTime / 3600);
+			var m = Math.floor(currentTime / 60);
+			var s = Math.floor(currentTime % 60);
+
+			h = h < 10 ? '0' + h : h;
+			m = m < 10 ? '0' + m : m;
+			s = s < 10 ? '0' + s : s;
+
+			// console.log(h, m, s);
+
+			// 将时间放入页面里(时间进度)
+			current.text(h + ':' + m + ':' +s);
+
+			// 进度条
+			// 当前时间/总的时间=当前播放的百分比
+			if(currentTime > 0) {
+				var loaded = currentTime / duration * 100;
+			}
+
+			// console.log(loaded);
+			line.css('width', loaded + '%');
+		}
+
+		// 点击跳播
+		$('.bar').on('click', function (ev) {
+			// 可以通过设置currentTime 实现跳播
+			// video.currentTime = 120;
+			// 当前点击位置/总进度条的宽度*总的播放时间
+
+			// 当前总的宽度（相当于是父的宽度）
+			var width = $(this).width();
+
+			// 可以获得当前点击位置
+			// console.log(ev.offsetX);
+			var offsetX = ev.offsetX;
+
+			// 设置定点播放
+			video.currentTime = offsetX / width * video.duration;
+		});
+
+		// 视频结束
+		video.onended = function () {
+			// console.log(1);
+
+			// 播放进度清0
+			video.currentTime = 0;
+
+			// 进度条也清0
+			line.css('width', 0);
+
+			// 播放按钮
+			$('.switch').addClass('fa-play').removeClass('fa-pause');
+		}
+
+		// 全屏
+		$('.expand').on('click', function () {
+			video.webkitRequestFullScreen();
+		});
+	</script>
+</body>
+</html>
