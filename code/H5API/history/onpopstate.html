@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>onpopstate</title>
+</head>
+<body>
+	<input type="button" id="btn" value="看地址变没变">
+	<script>
+		var btn = document.getElementById('btn');
+
+		btn.onclick = function () {
+			// 追加历史记录
+			history.pushState({key: 123}, 'title', '/text.html');
+		}
+
+		// 监听历史的变化
+		window.onpopstate = function (state) {
+			console.log(state);
+		}
+		
+	</script>
+</body>
+</html>

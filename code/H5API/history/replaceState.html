@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>replaceState</title>
+</head>
+<body>
+	<input type="button" id="btn" value="看地址变没变">
+	<script>
+		var btn = document.getElementById('btn');
+
+		btn.onclick = function () {
+			// 1、和pushstate用法一样
+			// 2、pushstate 可以改变当前地址，也可以追加一条
+			// 	  历史记录
+			// 3、replacestate 只能改变当前地址
+			history.replaceState(null, 'title', '/test.htm');
+		}
+	</script>
+</body>
+</html>

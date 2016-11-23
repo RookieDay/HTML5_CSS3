@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pushState</title>
+</head>
+<body>
+	<input type="button" id="btn" value="看地址变没变">
+	<script>
+		// 1、pushState可以往历史记录添加一条记录
+		var btn = document.getElementById('btn');
+		
+		btn.onclick = function () {
+			// history对象的新方法pushState
+			// 可以追加一条历史记录
+			// 追加完成后，当前页面并未刷新
+			history.pushState(null, 'title', '/text.html');
+
+			// 1、代表是传递的数据，一般可能传null
+			// 2、代表网页标题，但是浏览器不支持
+			// 3、追加的历史记录
+		}		
+	</script>
+</body>
+</html>
