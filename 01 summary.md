@@ -689,3 +689,154 @@ DOM扩展
         Node.dataset是以对象形式存在的
         当我们如下格式设置时，则需要以驼峰格式才能正确获取
         data-my-name="baidu"，获取Node.dataset['myName']
+
+
+新增API
+
+拖拽
+    在HTML5的规范中，我们可以通过为元素增加draggable="true"来设置此元素是否可以进行拖拽操作，其中图片、链接默认是开启的。
+    拖拽元素    
+        页面中设置了draggable="true"属性的元素
+    目标元素
+        页面中任何一个元素都可以成为目标元素
+
+    事件监听
+        拖拽元素
+        ondrag 		应用于拖拽元素，整个拖拽过程都会调用
+        ondragstart	应用于拖拽元素，当拖拽开始时调用
+        ondragleave	应用于拖拽元素，当鼠标离开拖拽元素时调用
+        ondragend	应用于拖拽元素，当拖拽结束时调用
+        目标元素
+        ondragenter	应用于目标元素，当拖拽元素进入时调用
+        ondragover	应用于目标元素，当停留在目标元素上时调用
+        ondrop		应用于目标元素，当在目标元素上松开鼠标时调用
+        ondragleave	应用于目标元素，当鼠标离开目标元素时调用
+        数据传递
+        ev.dataTransfer.setData() 设置数据
+        ev.dataTransfer.getData() 读取数据
+历史管理
+    提供window.history，对象我们可以管理历史记录，可用于单页面应用，Single Page Application，可以无刷新改变网页内容。
+    旧版本
+        history.back() 回退
+        history.forward() 前进
+        history.go(n) 前进/后退n步，正值前进，负值后退
+        history.length历史记录条数
+    新增方法
+        1、pushState(data, title, url) 追加一条历史记录
+            data用于存储自定义数据，通常设为null
+            title网页标题，基本上没有被支持，一般设为空
+            url 以当前域为基础增加一条历史记录，不可跨域设置
+        2、replaceState(data, title, url) 与pushState()基本相同，不同之处在于replaceState()，只是替换当前url，不会增加/减少历史记录。
+        Single Page Application单页面应用
+    事件监听
+        onpopstate事件，当前进或后退时则触发，通过事件对象ev.state可以读取到存储的数据，监听是要给window。
+地理定位
+    在HTML规范中，增加了获取用户地理信息的API，这样使得我们可以基于用户位置开发互联网应用，即基于位置服务 (Location Base Service)
+    获取地理信息方式
+        1、IP地址
+        2、三维坐标
+            GPS（Global Positioning System，全球定位系统）
+            Wi-Fi
+            手机信号
+        3、用户自定义数据
+        如附图对不同获取方式的优缺点进行了比较，浏览器会自动以最优方式去获取用户地理信息。
+    隐私
+    HTML5 Geolocation 规范提供了一套保护用户隐私的机制。必须先得到用户明确许可，才能获取用户的位置信息。
+    API详解
+        navigator.getCurrentPosition(successCallback, errorCallback, options) 获取当前地理信息
+        navigator.watchPosition(successCallback, errorCallback, options) 重复获取当前地理信息
+        1、当成功获取地理信息后，会调用succssCallback，并返回一个包含位置信息的对象position。
+            position.coords.latitude纬度
+            position.coords.longitude经度
+            position.coords.accuracy精度
+            position.coords.altitude海拔高度
+        2、当获取地理信息失败后，会调用errorCallback，并返回错误信息error
+        3、可选参数 options 对象可以调整位置信息数据收集方式
+            a) enableHighAccuracy 高精度模式
+            b) timeout 超时设置，单位为ms
+            c) maximumAge表示浏览器重新获取位置信息的时间间隔，单位为ms
+
+Web存储
+    随着互联网的快速发展，基于网页的应用越来越普遍，同时也变的越来越复杂，为了满足各种各样的需求，会经常性在本地存储大量的数据，传统方式我们以document.cookie来进行存储的，但是由于其存储大小只有4k左右，并且解析也相当的复杂，给开发带来诸多不便，HTML5规范则提出解决方案
+	特性
+        1、设置、读取方便
+        2、容量较大，sessionStorage约5M、localStorage约20M
+        4、只能存储字符串，可以将对象JSON.stringify() 编码后存储
+    window.sessionStorage
+        1、生命周期为关闭浏览器窗口
+        2、在同一个窗口下数据可以共享
+    window.localStorage
+        1、永久生效，除非手动删除
+        2、可以多窗口共享
+    方法详解
+        setItem(key, value) 设置存储内容
+        getItem(key) 读取存储内容
+        removeItem(key) 删除键值为key的存储内容
+        clear() 清空所有存储内容
+        key(n) 以索引值来获取存储内容
+    其它
+        WebSQL、IndexDB
+全屏
+    HTML5规范允许用户自定义网页上任一元素全屏显示。
+        requestFullScreen() 开启全屏显示
+        cancleFullScreen() 关闭全屏显示
+    不同浏览器需要添加前缀如：
+        webkitRequestFullScreen、mozRequestFullScreen
+        webkitCancelFullScreen、mozCancelFullScreen
+    规范允许所有元素可以取全屏，但实际测试结果关闭全屏只能添加到document元素上
+    通过document.fullScreen检测当前是否处于全屏状态
+    不同浏览器需要添加前缀
+        document.webkitIsFullScreen、document.mozFullScreen
+    全屏伪类
+        :full-screen .box {}、:-webkit-full-screen {}、:moz-full-screen {}
+
+网络状态
+    我们可以通过window. navigator.onLine来检测，用户当前的网络状况，返回一个布尔值
+    addEventListener 进行绑定online用户网络连接时被调用
+    addEventListener 进行绑定.offline用户网络断开时被调用
+    事件是给window绑订的
+
+应用缓存
+    HTML5中我们可以轻松的构建一个离线（无网络状态）应用，只需要创建一个cache manifest文件。
+    优势
+        1、可配置需要缓存的资源
+        2、网络无连接应用仍可用
+        3、本地读取缓存资源，提升访问速度，增强用户体验
+        4、减少请求，缓解服务器负担
+    缓存清单
+        一个普通文本文件，其中列出了浏览器应缓存以供离线访问的资源，推荐使用.appcache为后缀名，添加MIME类型
+        AddType text/cache-manifest .appcache
+        例如我们创建了一个名为demo.appcache的文件，然后在需要应用缓存在页面的根元素(html)添加属性manifest="demo.appcache"，路径要保证正确。
+    manifest文件格式
+        1、顶行写CACHE MANIFEST
+        2、CACHE: 换行 指定我们需要缓存的静态资源，如.css、image、js等
+        3、NETWORK: 换行 指定需要在线访问的资源，可使用通配符
+        4、FALLBACK: 换行 当被缓存的文件找不到时的备用资源
+    事件监听
+    其它
+        1、CACHE: 可以省略，这种情况下将需要缓存的资源写在CACHE MANIFEST
+        2、可以指定多个CACHE:  NETWORK:  FALLBACK:，无顺序限制
+        3、#表示注释，只有当demo.appcache文件内容发生改变时或者手动清除缓存后，才会重新缓存。
+        4、chrome 可以通过chrome://appcache-internals/工具和离线（offline）模式来调试管理应用缓存
+文件读取
+    通过FileReader对象我们可以读取本地存储的文件，可以使用 File 对象来指定所要读取的文件或数据。其中File对象可以是来自用户在一个 <input> 元素上选择文件后返回的FileList 对象，也可以来自由拖放操作生成的  DataTransfer
+    FileList对象
+        由于HTML5中我们可以通过为表单元素添加multiple属性，因此我们通过<input>上传文件后得到的是一个FileList对象（伪数组形式）。
+    FileReader对象
+    HTML5新增内建对象，可以读取本地文件内容。
+    var reader = new FileReader; 可以实例化一个对象
+    实例方法
+        1、readAsDataURL() 以DataURL形式读取文件
+    事件监听
+        onload 当文读取完成时调用
+    属性
+        result 文件读取结果
+    参考资料
+    https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc
+
+多媒体
+    方法：load()、play()、pause()
+    属性：currentSrc、currentTime、duration
+    事件：
+    参考文档
+    http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp
