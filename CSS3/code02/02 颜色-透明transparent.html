@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 颜色</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		/**
+		 * 不可调节透明度，始终完全透明
+		 * 无法实现关透明
+		 */
+		
+		.box {
+			width: 300px;
+			height: 300px;
+			margin: 100px auto;
+			background: orange;
+		}
+
+		.inner {
+			width: 150px;
+			height: 150px;
+			background: transparent;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="inner"></div>
+	</div>
+</body>
+</html>
