@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>选择器 - 伪元素</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: '微软雅黑';
+            background-color: #F7F7F7;
+        }
+        
+        li {
+            font-size: 20px;
+            /*line-height: 40px;*/
+            list-style: none;
+        }
+        
+        li .before,
+        li .after {
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 10px;
+        }
+        /*通过::before ::after; 可以添加一个子节点，并且这个子节点的样式可以像普通元素一样去设置*/
+        /*::before 和 ::after 是用来“动态”创建子节点的*/
+        
+        li::before,
+        li::after {
+            /*默认的情况下是一个行内元素，所以当需要设置宽高的情况必须先转成块元素*/
+            display: block;
+            /*可以为我们动态创建的子节点去添加一些内容*/
+            /*content: '放点内容';*/
+            /*content这个属性必须要写，没有内容就给空*/
+            content: '';
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 10px;
+        }
+        /*CSS2的版本伪元素的写法*/
+        /*:before :after;*/
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <span class="before">原始添加的</span>
+            <span class="after">原始添加的后面的</span>
+        </li>
+    </ul>
+</body>
+
+</html>

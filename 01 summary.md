@@ -934,3 +934,170 @@ border-radius
         1、box-sizing: border-box  计算方式为content = width – border - padding  变小了
         2、box-sizing: content-box  计算方式为content = width
     兼容性比较好
+
+
+背景
+    背景在CSS3中也得到很大程度的增强，比如背景图片尺寸、背景裁切区域、背景定位参照点、多重背景等。
+    1、background-size设置背景图片的尺寸
+        cover会自动调整缩放比例，保证图片始终填充满背景区域，如有溢出部分则会被隐藏。
+        contain会自动调整缩放比例，保证图片始终完整显示在背景区域。
+        也可以使用长度单位或百分比 
+    2、background-origin设置背景定位的原点
+        border-box以边框做为参考原点；
+        padding-box以内边距做为参考原点；
+        content-box以内容区做为参考点；
+    3、background-clip设置背景区域裁切
+        border-box裁切边框以内为背景区域；
+        padding-box裁切内边距以内为背景区域；
+        content-box裁切内容区做为背景区域；
+    4、以逗号分隔可以设置多背景，可用于自适应局
+        背景图片尺寸在实际开发中应用十分广泛。
+渐变
+    渐变是CSS3当中比较丰富多彩的一个特性，通过渐变我们可以实现许多炫丽的效果，有效的减少图片的使用数量，并且具有很强的适应性和可扩展性。
+    可分为线性渐变、径向渐变
+
+线性渐变
+    linear-gradient线性渐变指沿着某条直线朝一个方向产生渐变效果。
+    从黄色渐变到绿色
+        1、必要的元素：
+        a、方向
+        b、起始颜色
+        c、终止色；
+    关于方向附图
+ 
+径向渐变
+    radial-gradient径向渐变指从一个中心点开始沿着四周产生渐变效果
+    
+    1、必要的元素：
+        a、辐射范围即圆半径 
+        b、中心点 即圆的中心
+        c、渐变起始色
+        d、渐变终止色
+    2、关于中心点：中心位置参照的是盒子的左上角
+    3、关于辐射范围：其半径可以不等，即可以是椭圆
+
+径向渐变
+radial-gradient径向渐变指从一个中心点开始沿着四周产生渐变效果 
+    1、必要的元素：
+        a、辐射范围即圆半径 
+        b、中心点 即圆的中心
+        c、渐变起始色
+        d、渐变终止色
+    2、关于中心点：中心位置参照的是盒子的左上角
+    3、关于辐射范围：其半径可以不等，即可以是椭圆
+
+过渡
+    过渡是CSS3中具有颠覆性的特征之一，可以实现元素不同状态间的平滑过渡（补间动画），经常用来制作动画效果。
+    帧动画：通过一帧一帧的画面按照固定顺序和速度播放。如电影胶片
+    补间动画：自动完成从起始状态到终止状态的的过渡。
+    关于补间动画更多学习可查看http://mux.alimama.com/posts/1009
+    特点：当前元素只要有“属性”发生变化时，可以平滑的进行过渡。
+    transition-property设置过渡属性
+    transition-duration设置过渡时间
+    transition-timing-function设置过渡速度
+    transition-delay设置过渡延时
+
+2D转换
+    转换是CSS3中具有颠覆性的特征之一，可以实现元素的位移、旋转、变形、缩放，甚至支持矩阵方式，配合即将学习的过渡和动画知识，可以取代大量之前只能靠Flash才可以实现的效果。
+        1、移动 translate(x, y) 可以改变元素的位置，x、y可为负值；
+        2、缩放 scale(x, y) 可以对元素进行水平和垂直方向的缩放，x、y的取值可为小数，不可为负值；
+        4、旋转 rotate(deg) 可以对元素进行旋转，正值为顺时针，负值为逆时针；
+        5、倾斜 skew(deg, deg) 可以使元素按一定的角度进行倾斜
+3D转换
+    1、3D坐标轴
+        用X、Y、Z分别表示空间的3个维度，三条轴互相垂直
+    2、左手坐标系
+        伸出左手，让拇指和食指成“L”形，大拇指向右，食指向上，中指指向前方。这样我们就建立了一个左手坐标系，拇指、食指和中指分别代表X、Y、Z轴的正方向
+    3、左手法则
+        左手握住旋转轴，竖起拇指指向旋转轴正方向，正向就是其余手指卷曲的方向。
+
+动画
+    动画是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。
+    1、必要元素：
+        a、通过@keyframes指定动画序列；
+        b、通过百分比将动画序列分割成多个节点；
+        c、在各节点中分别定义各属性
+        d、通过animation将动画应用于相应元素；
+    2、关键属性
+        a、animation-name设置动画序列名称
+        b、animation-duration动画持续时间
+        c、animation-delay动画延时时间
+        d、animation-timing-function动画执行速度，linear、ease等
+        e、animation-play-state动画播放状态，play、paused等
+        f、animation-direction动画逆播，alternate等
+        g、animation-fill-mode动画执行完毕后状态，forwards、backwards等
+        h、animation-iteration-count动画执行次数，inifinate等
+
+
+伸缩布局 附图
+    CSS3在布局方面做了非常大的改进，使得我们对块级元素的布局排列变得十分灵活，适应性非常强，其强大的伸缩性，在响应式开中可以发挥极大的作用。
+    主轴：Flex容器的主轴主要用来配置Flex项目，默认是水平方向
+    侧轴：与主轴垂直的轴称作侧轴，默认是垂直方向的
+    方向：默认主轴从左向右，侧轴默认从上到下
+    主轴和侧轴并不是固定不变的，通过flex-direction可以互换。
+
+    1、必要元素：
+        a、指定一个盒子为伸缩盒子 display: flex
+        b、设置属性来调整此盒的子元素的布局方式 例如 flex-direction
+        c、明确主侧轴及方向
+        d、可互换主侧轴，也可改变方向
+    2、各属性详解
+        a、flex-direction调整主轴方向（默认为水平方向）
+        b、justify-content调整主轴对齐
+        c、align-items调整侧轴对齐
+        d、flex-wrap控制是否换行
+        e、align-content堆栈（由flex-wrap产生的独立行）对齐
+        f、flex-flow是flex-direction、flex-wrap的简写形式
+        g、flex控制子项目的缩放比例
+        h、order控制子项目的排列顺序
+
+字体格式
+不同浏览器所支持的字体格式是不一样的，我们有必要了解一下有关字体格式的知识。
+    1、TureTpe(.ttf)格式
+        .ttf字体是Windows和Mac的最常见的字体，是一种RAW格式，支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome4+、Safari3+、Opera10+、iOS Mobile、Safari4.2+；
+    2、OpenType(.otf)格式
+        .otf字体被认为是一种原始的字体格式，其内置在TureType的基础上，支持这种字体的浏览器有Firefox3.5+、Chrome4.0+、Safari3.1+、Opera10.0+、iOS Mobile、Safari4.2+；
+    3、Web Open Font Format(.woff)格式
+        woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType的压缩版本，同时也支持元数据包的分离，支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome6+、Safari3.6+、Opera11.1+；
+    4、Embedded Open Type(.eot)格式
+        .eot字体是IE专用字体，可以从TrueType创建此格式字体，支持这种字体的浏览器有IE4+；
+    5、SVG(.svg)格式
+        .svg字体是基于SVG字体渲染的一种格式，支持这种字体的浏览器有Chrome4+、Safari3.1+、Opera10.0+、iOS Mobile Safari3.2+；
+    了解了上面的知识后，我们就需要为不同的浏览器准备不同格式的字体，通常我们会通过字体生成工具帮我们生成各种格式的字体，因此无需过于在意字体格式间的区别差异。
+    推荐http://www.zhaozi.cn/、http://www.youziku.com/ 查找更多中文字体
+
+
+字体图标
+    其实我们可以把文字理解成是一种特殊形状的图片，反之我们是不是也可以把图片制作成字体呢？
+    答案是肯定的。
+    常见的是把网页常用的一些小的图标，借助工具帮我们生成一个字体包，然后就可以像使用文字一样使用图标了。
+    优点：
+        1、将所有图标打包成字体库，减少请求；
+        2、具有矢量性，可保证清晰度；
+        3、使用灵活，便于维护；
+    Font Awesome 使用介绍
+        http://fontawesome.dashgame.com/
+    定制自已的字体图标库
+        http://iconfont.cn/
+        https://icomoon.io/
+    SVG素材
+        http://www.iconsvg.com/
+
+
+通过http://caniuse.com/ 可查询CSS3各特性的支持程度，一般兼容性处理的常见方法是为属性
+添加私有前缀，如不能解决，应避免使用，无需刻意去处理CSS3的兼容性问题。
+
+
+私有前缀：
+    /*-webkit- 内核的浏览器会识别*/
+    -webkit-border-radius: 100px;
+    /*火狐浏览器 当属稳定后会将带前缀的属性废弃*/
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    /*欧朋*/
+    /*-o-*/
+    /*IE*/
+    /*-ms-*/
+
+
+    

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>选择器 - 属性</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: '微软雅黑';
+            background-color: #F7F7F7;
+        }
+        
+        a {
+            color: #333;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        
+        li {
+            line-height: 40px;
+        }
+        /**
+		 * 我们先要了解属性选择器的语法
+		 * E:[attr];
+		 * E:[attr=val];
+		 * E:[attr^=val];
+		 * E:[attr$=val];
+		 * E:[attr*=val];
+		 */
+        /*属性选择器.开头 ID以#开头 这两者其实是一种语法格式*/
+        /*属性选择器是以属性做为帅选件，语法格式是[]*/
+        /*最基本的属性选择器*/
+        
+        [href] {
+            color: red;
+        }
+        /*这种情况下是以属性值以a打头的全部被选中*/
+        
+        [href^=a] {
+            color: blue;
+        }
+        /*这种情况下表示属性值以mp3结尾的被选中*/
+        
+        [href$=mp3] {
+            color: pink;
+        }
+        /*这种情况表示属性值完全等于a.mp4*/
+        
+        [href="a.mp4"] {
+            color: green;
+        }
+        /*这种情况下表示属性值只要包含m即可*/
+        
+        [href*=m] {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="a.mp4">a.mp4是一个视频文件</a>
+        </li>
+        <li>
+            <a href="b.txt">b.txt是一个文本文件</a>
+        </li>
+        <li>
+            <a href="a.mp3">a.mp3一个音频文件</a>
+        </li>
+        <li>
+            <a href="b.mp3">b.mp3一个音频文件</a>
+        </li>
+        <li>
+            <a href="a.rmvb">a.rmvb是一个视频文件</a>
+        </li>
+        <li>
+            <a href="b.rmvb">b.rmvb是一个视频文件</a>
+        </li>
+    </ul>
+</body>
+
+</html>
