@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .border-image {
+            width: 400px;
+            height: 500px;
+            /*background: red;*/
+            margin: 100px auto;
+            /*border-image: url(./images/border.png) 27/20 round;*/
+            /*咱们通过设置属性来实现*/
+            border-image-source: url('./images/border.png');
+            /*裁切*/
+            /*?27表示什么*/
+            /*第一个参数距离上面 27*/
+            /*第二个参数距离右面 27*/
+            /*第三个参数距离下面 27*/
+            /*第四个参数距离左面 27*/
+            border-image-slice: 27 27 27 27;
+            /*平铺效果 round repeat stretch*/
+            /*border-image-repeat: round;*/
+            /*溢出会截掉*/
+            /*border-image-repeat: repeat;*/
+            /*会自动的调整大小，保证能够正好放下*/
+            border-image-repeat: round;
+            /*设置宽度*/
+            border-image-width: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="border-image"></div>
+</body>
+
+</html>
