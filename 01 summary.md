@@ -840,3 +840,97 @@ Web存储
     事件：
     参考文档
     http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp
+
+
+Css3:
+
+    []		表示全部可选项
+    ||		表示或者
+    |		表示多选一
+    ？	表示0个或者1个
+    *		表示0个或者多个
+    {}		表示范围
+
+选择器：
+
+属性选择器
+    其特点是通过属性来选择元素，具体有以下5种形式：
+    1、E[attr] 表示存在attr属性即可；
+    2、E[attr=val] 表示属性值完全等于val；
+    3、E[attr*=val] 表示的属性值里包含val字符并且在“任意”位置；
+    4、E[attr^=val] 表示的属性值里包含val字符并且在“开始”位置；
+    5、E[attr$=val] 表示的属性值里包含val字符并且在“结束”位置；
+伪类选择器
+    除了以前学过的:link、:active、:visited、:hover，CSS3又新增了其它的伪类选择器。
+    1、以某元素相对于其父元素或兄弟元素的位置来获取无素的结构伪类。
+        重点理解通过E来确定元素的父元素。
+        E:first-child第一个子元素
+        E:last-child最后一个子元素
+        E:nth-child(n) 第n个子元素，计算方法是E元素的全部兄弟元素；
+        E:nth-last-child(n) 同E:nth-child(n) 相似，只是倒着计算；
+        n遵循线性变化，其取值0、1、2、3、4、... 但是当n<=0时，选取无效。
+        n可是多种形式：nth-child(2n+0)、nth-child(2n+1)、nth-child(-1n+3)等；
+        需要满足y=ax+b
+        注：指E元素的父元素，并对应位置的子元素必须是E
+        E:empty 选中没有任何子节点的E元素；（使用不是非常广泛）
+    2、目标伪类
+      E:target 结合锚点进行使用，处于当前锚点的元素会被选中；
+
+伪元素选择器
+    E::first-letter文本的第一个单词或字（如中文、日文、韩文等）；
+    E::first-line 文本第一行；
+    E::selection 可改变选中文本的样式；
+    重点：E::before、E::after
+        是一个行内元素，需要转换成块元素
+        E:after、E:before 在旧版本里是伪元素，CSS3的规范里“:”用来表示伪类，“::”用来表示伪元素，但是在高版本浏览器下E:after、E:before会被自动识别为E::after、E::before，这样做的目的是用来做兼容处理。
+        E:after、E:before后面的练习中会反复用到，目前只需要有个大致了解
+        ":" 与 "::" 区别在于区分伪类和伪元素
+    参考文档
+        :before和::before的区别
+        https://www.qianduan.net/before-and-before-the-difference-between/
+颜色
+    新增了RGBA、HSLA模式，其中的A 表示透明度通道，即可以设置颜色值的透明度，相较opacity，它们不具有继承性，即不会影响子元素的透明度。
+    Red、Green、Blue、Alpha即RGBA
+    Hue、Saturation、Lightness、Alpha即HSLA
+    R、G、B 取值范围0~255
+    H 色调 取值范围0~360，0/360表示红色、120表示绿色、240表示蓝色
+    S 饱和度 取值范围0%~100%
+    L 亮度 取值范围0%~100%
+    A 透明度 取值范围0~1
+    关于透明度：
+        1、opacity只能针对整个盒子设置透明度，子盒子及内容会继承父盒子的透明度；
+        2 、transparent 不可调节透明度，始终完全透明
+        RGBA、HSLA可应用于所有使用颜色的地方。
+文本
+    text-shadow，可分别设置偏移量、模糊度、颜色（可设透明度）。
+        1、水平偏移量 正值向右 负值向左；
+        2、垂直偏移量 正值向下 负值向上；
+        3、模糊度是不能为负值；
+边框
+    其中边框圆角、边框阴影属性，应用十分广泛，兼容性也相对较好，具有符合渐进增强原则的特征
+
+边框圆角
+border-radius
+    圆角处理时，脑中要形成圆、圆心、横轴、纵轴的概念，正圆是椭圆的一种特殊情况  附图
+
+边框阴影
+    box-shadow
+        1、水平偏移量 正值向右 负值向左；
+        2、垂直偏移量 正值向下 负值向上；
+        3、模糊度是不能为负值；
+        4、inset可以设置内阴影；
+        设置边框阴影不会改变盒子的大小，即不会影响其兄弟元素的布局。
+        可以设置多重边框阴影，实现更好的效果，增强立体感。
+
+边框图片
+    border-image
+    设置的图片将会被“切割”成九宫格形式，然后进行设置。
+    1、round和repeat之间的区别
+        round 会自动调整尺寸，完整显示边框图片。
+
+盒模型
+    CSS3中可以通过box-sizing 来指定盒模型，即可指定为content-box、border-box，这样我们计算盒子大小的方式就发生了改变。
+    可以分成两种情况：
+        1、box-sizing: border-box  计算方式为content = width – border - padding  变小了
+        2、box-sizing: content-box  计算方式为content = width
+    兼容性比较好
