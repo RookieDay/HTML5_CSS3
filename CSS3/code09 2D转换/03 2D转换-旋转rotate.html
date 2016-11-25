@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 2D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.rotate {
+			width: 200px;
+			height: 200px;
+			margin: 60px auto;
+			background-color: green;
+			transition: all 1s;
+			/*调调转换原点*/
+			transform-origin: right top;
+		}
+
+		/*旋转*/
+		.rotate:hover {
+			transform: rotate(360deg);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="rotate"></div>
+</body>
+</html>

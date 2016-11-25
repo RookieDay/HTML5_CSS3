@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> baidu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        
+        .log {
+            width: 270px;
+            height: 129px;
+            margin: 100px auto;
+            background-image: url(./baidu.png);
+            background-position: 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="log"></div>
+    <script>
+        var log = document.querySelector('.log');
+        alert(log)
+        var offset = -270;
+        var n = 0;
+        setInterval(function() {
+            n++;
+            log.style.backgroundPosition = offset * n + 'px 0px';
+            if (n > 64) n = 0;
+        }, 100);
+    </script>
+</body>
+
+</html>
