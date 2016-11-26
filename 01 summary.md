@@ -1099,4 +1099,137 @@ radial-gradient径向渐变指从一个中心点开始沿着四周产生渐变�
     /*IE*/
     /*-ms-*/
 
+锚点：
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 动画</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        
+        ul.handle {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .handle li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .handle li:nth-child(1) {
+            background: url(./images/bg1.jpg);
+            background-size: cover;
+            z-index: 3;
+        }
+        
+        .handle li:nth-child(2) {
+            background: url(./images/bg2.jpg);
+            background-size: cover;
+            z-index: 2;
+        }
+        
+        .handle li:nth-child(3) {
+            background: url(./images/bg3.jpg);
+            background-size: cover;
+            z-index: 1;
+        }
+        
+        .btn {
+            width: 100%;
+            height: 120px;
+            text-align: center;
+            position: absolute;
+            bottom: 80px;
+            z-index: 10;
+        }
+        
+        .btn li {
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            text-align: center;
+            line-height: 120px;
+            font-size: 30px;
+            border-radius: 50%;
+            background: pink;
+            margin: 0 10px;
+        }
+        
+        .btn a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #000;
+        }
+        /*表明第一个锚点被选中*/
+        
+        #img1:target {
+            z-index: 3;
+            /*可以定义一个动画*/
+            animation: slideleft 1s;
+        }
+        /*表明第二个锚点被选中*/
+        
+        #img2:target {
+            z-index: 3;
+        }
+        /*表明第三个锚点被选中*/
+        
+        #img3:target {
+            z-index: 3;
+        }
+        
+        @keyframes slideleft {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="handle">
+        <li id="img1"></li>
+        <li id="img2"></li>
+        <li id="img3"></li>
+    </ul>
+
+    <ul class="btn">
+        <li>
+            <a href="#img1">1</a>
+        </li>
+        <li>
+            <a href="#img2">2</a>
+        </li>
+        <li>
+            <a href="#img3">3</a>
+        </li>
+    </ul>
+</body>
+
+</html>
+
 

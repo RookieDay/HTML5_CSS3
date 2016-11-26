@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 动画</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			width: 400px;
+			margin: 100px auto;
+		}
+
+		.box img {
+			width: 100%;
+
+			animation: rotate 5s linear infinite;
+		}
+
+		/*定义动画的状态*/
+		@keyframes rotate {
+			0% {
+				/*第一种状态*/
+				transform: rotateZ(0);
+			}
+
+			/*50% {*/
+				/*可以有其它状态*/
+			/*}*/
+
+			100% {
+				/*第二种状态*/
+				transform: rotateZ(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="./images/fengche.png">
+	</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 动画</title>
+	<style>
+		html, body {
+			height: 100%;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			width: 200px;
+			height: 200px;
+			background-color: green;
+
+			/*animation: move 1s infinite;*/
+
+			/*动画的名字*/
+			animation-name: move;
+
+			/*动画持续时间*/
+			animation-duration: 1s;
+
+			/*动画播放次数*/
+			animation-iteration-count: infinite;
+		
+			/*动画播放结束的状态*/
+			/*animation-fill-mode: forwards;*/
+
+			/*动画逆播*/
+			animation-direction: alternate;
+
+			/*动画播放速度*/
+			animation-timing-function: ease-in;
+
+			/*动画延时*/
+			animation-delay: 3s;
+
+		}
+
+		/*.box:hover {*/
+			/*动画暂停*/
+			/*animation-play-state: paused;*/
+		/*}*/
+
+		/*定义了一个动画集*/
+		@keyframes move {
+			from {
+				width: 200px;
+				height: 200px;
+			}
+
+			to {
+				width: 400px;
+				height: 400px;
+			}
+		}
+
+
+		/**
+		 * 动画序列
+		 * 指定动画序列名
+		 * 调整动画细节（掌握各属性的特点和用法）
+		 */
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
